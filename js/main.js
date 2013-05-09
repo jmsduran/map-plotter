@@ -6,7 +6,7 @@
 /**
  * The global array of objects containing coordinates and text data
  * describing various locations across the US.
- * @type {Array}
+ * @type {Array<object>}
  */
 var data = [
     {
@@ -67,6 +67,7 @@ var data = [
 
 /**
  * Creates a marker and InfoWindow and registers them onto the Map.
+ * @function createMarkerAndInfoWindow
  * @param {object} map - The handle for the Google Maps HTML canvas.
  * @param {object} dataObject - Contains the coordinates and text data of a location.
  */
@@ -96,6 +97,7 @@ var createMarkerAndInfoWindow = function(map, dataObject) {
 
 /**
  * Callback function that retrieves the geocoder response and creates a marker and InfoWindow.
+ * @callback geocoderRequestCallback
  * @param {object} results - The geocoder JSON response object containing results.
  * @param {object} status - The geocoder status code for the request.
  * @param {object} map - The handle for the Google Maps HTML canvas.
@@ -125,6 +127,7 @@ var geocoderRequestCallback = function(results, status, map, dataObject) {
 
 /**
  * Creates a geocoder search request to retrieve coordinates based off dataObject.title.
+ * @function requestLatLngFromTitle
  * @param {object} map - The handle for the Google Maps HTML canvas.
  * @param {object} dataObject - Contains the coordinates and text data of a location.
  */
@@ -143,6 +146,7 @@ var requestLatLngFromTitle = function(geocoder, map, dataObject) {
 
 /**
  * The main function that is executed upon the window loading.
+ * @function init
  */
 var init = function() {
     console.log('START init()');
