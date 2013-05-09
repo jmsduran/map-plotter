@@ -54,12 +54,16 @@ var data = [
     {
         lat: 0,
         lng: 0,
+        title:'Central Intelligence Agency, USA',
+        content: ''
+    },
+    {
+        lat: 0,
+        lng: 0,
         title:'Zilker Park, Austin, TX',
         content: ''
     }
 ];
-
-var geocoder = null;
 
 /**
  * Creates a marker and InfoWindow and registers them onto the Map.
@@ -124,7 +128,7 @@ var geocoderRequestCallback = function(results, status, map, dataObject) {
  * @param {object} map - The handle for the Google Maps HTML canvas.
  * @param {object} dataObject - Contains the coordinates and text data of a location.
  */
-var requestLatLngFromTitle = function(map, dataObject) {
+var requestLatLngFromTitle = function(geocoder, map, dataObject) {
     console.log('START requestLatLngFromTitle()');
     geocoder.geocode({
             'address': dataObject.title
@@ -143,7 +147,7 @@ var requestLatLngFromTitle = function(map, dataObject) {
 var init = function() {
     console.log('START init()');
     // Initialize the geocoding service, to convert addresses to coords.
-    geocoder = new google.maps.Geocoder();
+    var g = new google.maps.Geocoder();
 
     // Initialize the map and roughly center it to the middle of the US.
     var o = {
@@ -156,10 +160,12 @@ var init = function() {
     // For each data element look up its coordinates based of its title,
     // and create a matching marker and InfoWindow.
     for(var i = 0; i < data.length; i++)
-        requestLatLngFromTitle(m, data[i]);
+        requestLatLngFromTitle(g, m, data[i]);
 
     console.log('END init()');
 };
 
-// Register an event handler to run the main function upon window loading.
+/**
+ * Registers an event handler to run the main function upon window loading.
+ */
 google.maps.event.addDomListener(window, 'load', init);
