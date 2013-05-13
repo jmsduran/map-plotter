@@ -12,6 +12,8 @@ Plugin(s)/API(s) Used:
 ---
 
 * [Google Maps JavaScript API v3] (https://developers.google.com/maps/documentation/javascript/tutorial)
+* [jQuery 1.9.1] (http://jquery.com/download/)
+* [jquery-csv 0.7 (Beta)] (https://code.google.com/p/jquery-csv/)
 
 License
 ---
