@@ -4,6 +4,19 @@
  */
 
 /**
+ * The CSV parser class.
+ * @name CSVParser
+ * @public
+ * @class
+ * @returns {object} Collection of publicly accessible methods.
+ */
+var CSVParser = (function() {
+    return {
+        // TODO Add CSV parsing function.
+    };
+})();
+
+/**
  * The class representing the map-plotter application.
  * @name MapPlotterApplication
  * @public
