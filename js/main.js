@@ -12,7 +12,34 @@
  */
 var CSVParser = (function() {
     return {
-        // TODO Add CSV parsing function.
+        /**
+         * Converts the selected file's data to a JSON object and returns it.
+         * @public
+         * @function getFileDataAsJSON
+         * @returns {object} JSON object representing the selected CSV file.
+         */
+        getFileDataAsJSON: function() {
+            // TODO Convert from arrays to JSON.
+        },
+
+        /**
+         * Handler function for the select file dialog window.
+         * @public
+         * @callback fileSelectHandler
+         */
+        fileSelectHandler: function(event) {
+            var files = event.target.files; // FileList object
+            var file = files[0];
+
+            // read the file metadata
+            var output = ''
+            output += '<span style="font-weight:bold;">' + escape(file.name) + '</span><br />\n';
+            output += ' - FileType: ' + (file.type || 'n/a') + '<br />\n';
+            output += ' - FileSize: ' + file.size + ' bytes<br />\n';
+            output += ' - LastModified: ' + (file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() : 'n/a') + '<br />\n';
+
+            alert(output);
+        }
     };
 })();
 
@@ -205,6 +232,17 @@ var MapPlotterApplication = (function() {
 })();
 
 /**
+ * The program's main function.
+ * @function main
+ */
+var main = function() {
+    document.getElementById('files').
+        addEventListener('change', CSVParser.fileSelectHandler);
+
+    MapPlotterApplication.run();
+}
+
+/**
  * Registers an event handler to run the main function upon window loading.
  */
-google.maps.event.addDomListener(window, 'load', MapPlotterApplication.run);
+google.maps.event.addDomListener(window, 'load', main);
